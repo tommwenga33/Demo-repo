@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		 {% load static %}
+  <link href="{% static 'css/registerer.css'%}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="heron">
+        <div class="top_nav">
+  <a href="{% url 'contact'%}">Contact</a>
+  <a href="{% url 'about'%}">About</a>
+    <a href="/">Home</a>
+</div>
+		<div class="form-box">
+            <div class="button-box">
+				<div id="btn"></div>
+			</div>
+
+				<form id="register" class="input-group" action="register" method="post"autocomplete="off">
+					{% csrf_token %}
+				 <label for="first"><b> First Name</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class="input-field"  placeholder="Enter your first name" name="first_name" id="first" required>
+       <label for="last"><b> Last Name</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class="input-field"  placeholder="Enter your last name" name="last_name" id="last" required>
+      <label for="user"><b><i class="fa fa-user"></i> Username</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class="input-field"
+           placeholder="Enter your username" name="username" id="user" required>
+      <label for="email"><b><i class="fa fa-envelope"></i> Email</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class="input-field"
+           placeholder="Enter your email" name="email" id="email" required>
+
+    <label for="psw1"><b><i class="fa fa-unlock-alt"></i> Password</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="new-password" type="password" class="input-field"
+           placeholder="Enter Password" name="psw1" id="psw1" required>
+
+    <label for="psw2"><b><i class="fa fa-unlock-alt"></i> Repeat Password</b></label>
+    <input autocorrect="off" spellcheck="false" autocomplete="new-password" type="password" class="input-field"  placeholder="Confirm Password" name="psw2" id="psw2" required>
+                    <div class="container">
+    <button type="submit" class="register_btn"><i class="fa fa-user-plus"></i> Register</button>
+                  </div>
+  <div class="container sign_in">
+    <p>Already have an account? <a href="{% url 'login'%}">Login</a>.</p>
+  </div>
+			</form>
+		</div>
+        </div>
+	</div>
+
+
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript">
+    {% if messages %}
+       {% for message in messages %}
+       Swal.fire({
+    title: 'Oops... !!!',
+  text: '{{ message }}',
+})
+
+        {% endfor %}
+    {% endif %}
+
+</script>
+
+
+
+</body>
+</html>
+
